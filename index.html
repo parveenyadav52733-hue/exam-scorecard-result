@@ -50,7 +50,7 @@ View My Scorecard
 <div id="captchaBox" style="display:none;">
 <h3 id="question"></h3>
 
-<input type="number" id="ans" placeholder="Enter Answer">
+<input type="text" id="ans" placeholder="Enter Captcha">
 
 <br><br>
 
@@ -62,31 +62,50 @@ Submit
 
 <script>
 
-let a,b;
+let captcha = "";
 
-function showCaptcha(){
-a=Math.floor(Math.random()*10)+1;
-b=Math.floor(Math.random()*10)+1;
+function generateCaptcha() {
 
-document.getElementById("captchaBox").style.display="block";
+    const chars =
+    "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
 
-document.getElementById("question").innerHTML=
-"Captcha: "+a+" + "+b+" = ?";
+    captcha = "";
+
+    for(let i=0;i<6;i++)
+    {
+        captcha += chars.charAt(
+            Math.floor(Math.random()*chars.length)
+        );
+    }
+
+    document.getElementById("captchaBox").style.display = "block";
+
+    document.getElementById("question").innerHTML =
+    "Captcha: <b style='font-size:30px;letter-spacing:4px;'>"
+    + captcha +
+    "</b>";
 }
 
-function verify(){
-
-let x=parseInt(
-document.getElementById("ans").value
-);
-
-if(x===a+b){
-
-window.location.href = "./CUET(UG)-2026scorecard.pdf";
+function showCaptcha() {
+    generateCaptcha();
 }
-else{
-alert("Invalid Captcha");
-}
+
+function verify() {
+
+    let x =
+    document.getElementById("ans").value.trim();
+
+    if(x === captcha)
+    {
+        window.location.href =
+        "./CUET(UG)-2026scorecard.pdf";
+    }
+    else
+    {
+        alert("Invalid Captcha");
+        document.getElementById("ans").value = "";
+        generateCaptcha();
+    }
 }
 
 </script>
