@@ -5,16 +5,53 @@
 <title>Examination Result Portal</title>
 
 <style>
+
 body{
     margin:0;
-    font-family:Arial, sans-serif;
     background:#f2f2f2;
+    font-family:Arial,sans-serif;
 }
 
+/* Top Header */
+
+.topHeader{
+    background:white;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+.col{
+    width:30%;
+    font-family:Georgia,serif;
+    font-weight:600;
+    line-height:1.5;
+    color:#222;
+}
+
+.center{
+    font-size:28px;
+}
+
+.sub{
+    font-size:16px;
+    margin-top:6px;
+}
+
+.blueStrip{
+    height:32px;
+    background:#032c5c;
+}
+
+/* Result Box */
+
 .container{
-    width:650px;
+    width:680px;
     max-width:95%;
-    margin:100px auto;
+    margin:70px auto;
     background:white;
     border:1px solid #d0d0d0;
 }
@@ -72,10 +109,36 @@ input[type=text]{
     cursor:pointer;
     border-radius:4px;
 }
+
 </style>
 </head>
 
 <body>
+
+<!-- Top Header -->
+
+<div class="topHeader">
+
+    <div class="col">
+        Directorate of Academic Services
+    </div>
+
+    <div class="col center">
+        Student Examination Portal
+        <div class="sub">
+            Examination Scorecard
+        </div>
+    </div>
+
+    <div class="col">
+        Assessment & Testing Services
+    </div>
+
+</div>
+
+<div class="blueStrip"></div>
+
+<!-- Result Card -->
 
 <div class="container">
 
@@ -97,6 +160,7 @@ Enter CAPTCHA
 type="text"
 id="ans"
 placeholder="Enter Captcha">
+
 </div>
 
 <div class="row">
@@ -117,11 +181,13 @@ onclick="generateCaptcha()">
 </div>
 
 <div class="row">
+
 <button
 class="submitBtn"
 onclick="verify()">
 SUBMIT
 </button>
+
 </div>
 
 </div>
@@ -174,4 +240,3 @@ generateCaptcha();
 
 </body>
 </html>
-
